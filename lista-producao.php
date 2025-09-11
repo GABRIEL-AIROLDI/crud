@@ -14,27 +14,30 @@ include_once './include/header.php';
             <tr>
               <th>ID</th>
               <th>Produto</th>
-              <th>Quantidade</th>
+              <th>Clientes</th>
               <th>Data</th>
               <th>Ações</th>
             </tr>
           </thead>
           <tbody>
-             <?php
-          $sql = 'SELECT * FROM funcionarios';
+          <?php
+          $sql = 'SELECT  pr.ProducaoID, p.Nome AS ProdutoNome, c.Nome AS ClienteNome,pr.ProdutoID, pr.DataProducao
+          FROM producao AS pr
+          INNER JOIN produtos AS p ON p.ProdutoID = pr.ProdutoID
+          INNER JOIN clientes AS c ON c.clienteID = pr.ClienteID';
           $resultado = mysqli_query($conexao, $sql);
           if (mysqli_num_rows($resultado) > 0) {
               while ($row = mysqli_fetch_assoc($resultado)) {
-                  echo "<tr>";
-                  echo "<td>" . $row['FuncionarioID'] . "</td>";
-                  echo "<td>" . $row['Nome'] . "</td>";
-                  echo "<td>" . $row['CargoID'] . "</td>";
-                  echo "<td>" . $row['SetorID'] . "</td>";
-                  echo "<td>
-                          <a href='salvar-setor.php?id=" . $row['SetorID'] . "' class='btn btn-edit'>Editar</a>
-                          <a href='#' class='btn btn-delete'>Excluir</a>
-                        </td>";
-                  echo "</tr>";
+                  echo '<tr>';
+                  echo '<td>' . $row['ProducaoID'] . '</td>';
+                  echo '<td>' . $row['ProdutoNome'] . '</td>';
+                  echo '<td>' . $row['ClienteNome'] . '</td>';
+                  echo '<td>' . $row['DataProducao'] . '</td>';
+                  echo '<td>
+                          <a href="salvar-setor.php?id=" class="btn btn-edit">Editar</a>
+                          <a href="" class="btn btn-delete">Excluir</a>
+                        </td>';
+                  echo '</tr>';
               }
           }
           ?>
