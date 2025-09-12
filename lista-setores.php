@@ -33,7 +33,7 @@ include_once './include/header.php';
                   echo "<td>". $row["Cor"] . "</td>";
                   echo "<td>
                           <a href='salvar-setor.php?id=" . $row['SetorID'] . "' class='btn btn-edit'>Editar</a>
-                          <a href='#' class='btn btn-delete'>Excluir</a>
+                          <a href="./action/setores.php?&acao=excluir&id=<?php echo $dado['SetorID']?> " class="btn btn-delete">Excluir</a>
                         </td>";
                   echo "</tr>";
               }
