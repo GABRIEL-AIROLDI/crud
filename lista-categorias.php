@@ -28,7 +28,7 @@ include_once './include/header.php';
                   echo "<td>" . $row['Nome'] . "</td>";
                   echo "<td>
                           <a href='salvar-cartegoria.php?id=" . $row['CategoriaID'] . "' class='btn btn-edit'>Editar</a>
-                          <a href='#' class='btn btn-delete'>Excluir</a>
+                             <a href='./action/categorias.php?acao=excluir&id=" . $row['CategoriaID'] . "' class='btn btn-delete'>Excluir</a>
                         </td>";
                   echo "</tr>";
               }

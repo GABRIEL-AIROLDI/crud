@@ -28,27 +28,17 @@ include_once './include/header.php';
  
           $retorno = mysqli_query($conexao, $sql);
  
-          while($linha = mysqli_fetch_assoc($retorno) ){
+          while($linha = mysqli_fetch_assoc($retorno)) {
             echo '
             <tr>
-            <td>'.$linha['ProdutoID'].'</td>
-            <td>'.$linha['Nome'].'</td>
-            <td>'.$linha['CategoriaNome'].'</td>
-            <td>'.$linha['Preco'].'</td>
-            <td>
-              <a href="salvar-cargos.php?id=" class="btn btn-edit">Editar</a>
-              <a href="#" class="btn btn-delete">Excluir</a>
-            </td>
+              <td>'.$linha['ProdutoID'].'</td>
+              <td>'.$linha['Nome'].'</td>
+              <td>'.$linha['CategoriaNome'].'</td>
+              <td>'.$linha['Preco'].'</td>
+              <td>
+                <a href="salvar-produtos.php?id=' . $linha['ProdutoID'] . '" class="btn btn-edit">Editar</a>
+                <a href="action/produtos.php?acao=excluir&id=' . $linha['ProdutoID'] . '" class="btn btn-delete" onclick="return confirm(\'Deseja realmente excluir este produto?\')">Excluir</a>
+              </td>
             </tr>';
-          }
-        ?>
- 
-
-        </tbody>
-      </table>
-    </div>
-
-<?php 
-  // include dos arquivox
-  include_once './include/footer.php';
-  ?>
+        }
+        

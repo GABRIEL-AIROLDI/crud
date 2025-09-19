@@ -1,19 +1,25 @@
 <?php
-// include dos arquivos
-include_once   '../include/logado.php';
-include_once   '../include/conexao.php';
 
-// captura a acao dos dados
-$acao = $_GET['acao'];
+include_once '../include/logado.php';
+include_once '../include/conexao.php';
 
-// validacao
+
+$acao = $_GET['acao'] ?? '';
+$id = $_GET['id'] ?? '';
+
+// executa a ação
 switch ($acao) {
-    case 'value':
-        # code...
+    case 'excluir':
+        if (!empty($id)) {
+            $id = intval($id);
+            $sql = 'DELETE FROM produtos WHERE ProdutoID = ' . $id;
+            mysqli_query($conexao, $sql);
+        }
+        header('Location: ../lista-produtos.php'); 
         break;
-    
+
     default:
-        # code...
+        header('Location: ../lista-produtos.php');
         break;
 }
 ?>
