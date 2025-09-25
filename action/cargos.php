@@ -1,5 +1,5 @@
 <?php
-// include dos arquivos
+
 include_once   '../include/logado.php';
 include_once   '../include/conexao.php';
 
